@@ -5,14 +5,14 @@ class Game
   def initialize
     puts "What is player 1's name?"
     player1 = gets.chomp
-    @player1 = Player.new(player1)
+    @player1 = Players.new(player1)
     puts "What is player 2's name?"
     player2 = gets.chomp
-    @player2 = Player.new(player2)
+    @player2 = Players.new(player2)
   end
 
   def start_question
-    @new_question = Question.new
+    @new_question = Questions.new
     puts "----- NEW TURN -----"
     if @player1.turn
       puts "#{@player2.name}: #{@new_question.new_question}"
@@ -39,14 +39,14 @@ class Game
     else
       if @player1.turn
         @player1.lives -= 1
-        puts "You are not right. BOOM you lose a point"
+        puts "You are not right. BOOM! you lose a point"
         @player1.turn = false
         @player2.turn = true
         puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name} : #{@player2.lives}/3"
         check_winner
       else
         @player2.lives -= 1
-        puts "You are not right. BOOM you lose a point"
+        puts "You are not right. BOOM! you lose a point"
         @player1.turn = true
         @player2.turn = false
         puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name}: #{@player2.lives}/3"
@@ -70,7 +70,7 @@ class Game
   end
   
   def next_turn
-    make_question
+    start_question
     check_answer
   end
 end
