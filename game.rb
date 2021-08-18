@@ -10,3 +10,19 @@ class Game
     player2 = gets.chomp
     @player2 = Player.new(player2)
   end
+
+  def start_question
+  end
+
+  def check_answer
+  end
+  
+  def check_winner
+  end
+  
+  def next_turn
+  end
+
+end
+  
+  
