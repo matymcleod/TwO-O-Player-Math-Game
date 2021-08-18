@@ -70,8 +70,9 @@ class Game
   end
   
   def next_turn
+    make_question
+    check_answer
   end
-
 end
   
   
