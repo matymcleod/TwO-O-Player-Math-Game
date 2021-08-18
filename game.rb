@@ -56,6 +56,17 @@ class Game
   end
   
   def check_winner
+    if @player1.lives == 0
+      puts "----- GAME OVER -----"
+      puts "#{@player2.name} wins with a score of #{@player2.lives}/3"
+      puts "Please play again"
+    elsif @player2.lives == 0
+      puts "----- GAME OVER -----"
+      puts "#{@player1.name} wins with a score of #{@player1.lives}/3"
+      puts "Please play again"
+    else
+      next_turn
+    end
   end
   
   def next_turn
