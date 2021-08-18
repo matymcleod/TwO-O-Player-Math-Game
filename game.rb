@@ -22,6 +22,37 @@ class Game
   end
 
   def check_answer
+    if gets.chomp.to_i == @new_question.answer
+      if @player1.turn
+        puts "You are right! Good job!"
+        @player1.turn = false
+        @player2.turn = true
+        puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name}: #{@player2.lives}/3"
+        check_winner
+      else
+        puts "You are right! Good job!"
+        @player1.turn = true
+        @player2.turn = false
+        puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name}: #{@player2.lives}/3"
+        check_winner
+      end
+    else
+      if @player1.turn
+        @player1.lives -= 1
+        puts "You are not right. BOOM you lose a point"
+        @player1.turn = false
+        @player2.turn = true
+        puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name} : #{@player2.lives}/3"
+        check_winner
+      else
+        @player2.lives -= 1
+        puts "You are not right. BOOM you lose a point"
+        @player1.turn = true
+        @player2.turn = false
+        puts "#{@player1.name}: #{@player1.lives}/3 vs #{@player2.name}: #{@player2.lives}/3"
+        check_winner
+      end
+    end
   end
   
   def check_winner
